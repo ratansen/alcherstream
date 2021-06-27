@@ -37,7 +37,7 @@ body{
 
 
 .fa {
-    padding: 30px;
+    padding: 20px;
     font-size: 30px;
     width: 50px;
     text-align: center;
@@ -51,7 +51,7 @@ body{
 
 .copyright{
     color:#ffffff;
-    padding-top:50px;
+    padding-top:30px;
     font-size: 1.7em;
     font-family: "Teko", sans-serif;
 }
