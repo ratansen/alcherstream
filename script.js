@@ -48,17 +48,33 @@ search.addEventListener("keyup",function(event){
         }).then((data)=>{
             console.log("check");
             var i=0,index=0;
-            while(i<8){
+            var len=data.results.length;
+            document.getElementById("moviecard").innerHTML="";
+            document.getElementById("topic").innerHTML="Search Results";
+
+            while(index<len){
                 if(data.results[index]["backdrop_path"]==null){
                     index++;
                     continue;
                 }
-                img[i].src="https://image.tmdb.org/t/p/w500"+data.results[index]["backdrop_path"];
-                moviename[i].innerHTML=data.results[index]["title"];
-                release[i].innerHTML=`Year of Release :&nbsp; ${data.results[index]["release_date"].slice(0,4)}`;
-                rating[i].innerHTML=`IMDb Rating :&nbsp; &nbsp; &nbsp; ${data.results[index]["vote_average"]}`;
+                // img[i].src="https://image.tmdb.org/t/p/w500"+data.results[index]["backdrop_path"];
+                var image="https://image.tmdb.org/t/p/w500"+data.results[index]["backdrop_path"];
+                // moviename[i].innerHTML=data.results[index]["title"];
+                // release[i].innerHTML=`Year of Release :&nbsp; ${data.results[index]["release_date"].slice(0,4)}`;
+                // rating[i].innerHTML=`IMDb Rating :&nbsp; &nbsp; &nbsp; ${data.results[index]["vote_average"]}`;
                 // info[i].innerHTML=`${data.results[index]["overview"]}`;
-
+                document.getElementById("moviecard").innerHTML+=`<div class="col">
+                <div class="card h-100">
+                  <img src=${image} class="card-img-top p-2 movieimage" alt="...">
+                  <div class="card-body d-flex flex-column cardbody">
+                    <h5 class="card-title moviehead">${data.results[index]["title"]}</h5>
+                    <h6 class="card-title release">Year of Release :&nbsp; ${data.results[index]["release_date"].slice(0,4)}</h6>
+                    <h6 class="card-title rating">IMDb Rating :&nbsp; &nbsp; &nbsp; ${data.results[index]["vote_average"]}</h6>
+                    <!-- <p class="card-text details">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                    <a href="#" class="btn btn-danger mt-auto w-100 play">Stream Now</a>
+                  </div>
+                </div>      
+              </div>`
 
 
                 // details[i].innerHTML="Rating : "+data.results[index]["vote_average"]+"/10";
