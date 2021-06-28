@@ -42,6 +42,7 @@ search.addEventListener("keyup",function(event){
     console.log("enterred");
     if(event.code==="Enter"){
         console.log("pressed");
+        document.getElementById("topic").scrollIntoView();
         var movie=`https://api.themoviedb.org/3/search/movie?api_key=080aa49f9f32535acf0e0fbfdd467528&query=${search.value}`;
         fetch(movie).then(function(response){
             return(response.json())
